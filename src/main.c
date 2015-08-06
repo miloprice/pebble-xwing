@@ -35,23 +35,23 @@ static void main_window_load(Window *window) {
     
     
     
-  s_shadow_layer = text_layer_create(GRect(28, 1, 116, window_bounds.size.h));
-  text_layer_set_text_alignment(s_shadow_layer, GTextAlignmentLeft);
+  s_shadow_layer = text_layer_create(GRect(18, 6, 126, window_bounds.size.h));
+  text_layer_set_text_alignment(s_shadow_layer, GTextAlignmentCenter);
     text_layer_set_background_color(s_shadow_layer, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer));
     
     
-  s_time_layer = text_layer_create(GRect(30, 0, 114, window_bounds.size.h));
-  text_layer_set_text_alignment(s_time_layer, GTextAlignmentLeft);
+  s_time_layer = text_layer_create(GRect(19, 5, 125, window_bounds.size.h));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
     text_layer_set_background_color(s_time_layer, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
     
   // Load and set custom font
-  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_STENCIL_34));
+  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_BEON_50));
   text_layer_set_font(s_time_layer, s_stencil);
   text_layer_set_font(s_shadow_layer, s_stencil);
   text_layer_set_text_color(s_time_layer, GColorRed);
-  text_layer_set_text_color(s_shadow_layer, GColorDarkCandyAppleRed);
+  text_layer_set_text_color(s_shadow_layer, GColorMelon);
 }
 
 static void main_window_unload(Window *window) {

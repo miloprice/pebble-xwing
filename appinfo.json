@@ -10,6 +10,13 @@
         "media": [
             {
                 "characterRegex": "[0-9:.]",
+                "file": "fonts/beon-webfont.ttf",
+                "name": "FONT_BEON_50",
+                "trackingAdjust": 3,
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:.]",
                 "file": "fonts/AG-Stencil.ttf",
                 "name": "STENCIL_34",
                 "type": "font"
