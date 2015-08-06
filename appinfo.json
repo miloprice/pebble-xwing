@@ -9,7 +9,13 @@
     "resources": {
         "media": [
             {
-                "file": "images/xwinglog.png",
+                "characterRegex": "[0-9:.]",
+                "file": "fonts/AG-Stencil.ttf",
+                "name": "STENCIL_34",
+                "type": "font"
+            },
+            {
+                "file": "images/xwinglogo.png",
                 "menuIcon": true,
                 "name": "LOGO",
                 "type": "png"
@@ -17,11 +23,6 @@
             {
                 "file": "images/209.png",
                 "name": "XWING",
-                "type": "png"
-            },
-            {
-                "file": "images/globe-aplite.png",
-                "name": "GLOBE",
                 "type": "png"
             }
         ]

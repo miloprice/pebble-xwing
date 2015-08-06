@@ -8,14 +8,25 @@
 static Window *s_main_window;
 static GBitmap *s_bitmap;
 static BitmapLayer *s_bitmap_layer;
+static TextLayer *s_time_layer;
+static GFont s_stencil;
+
+// Tick handler, to update every minute
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+    tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+    static char s_time_buffer[16];
+    // This function is extremely handy
+    clock_copy_time_string(s_time_buffer, sizeof(s_time_buffer));
+    text_layer_set_text(s_time_layer, s_time_buffer);
+}
 
 static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
-  GRect bounds = layer_get_bounds(window_layer);
+  GRect window_bounds = layer_get_bounds(window_layer);
 
   s_bitmap = gbitmap_create_with_resource(RESOURCE_ID_XWING);
 
-  s_bitmap_layer = bitmap_layer_create(bounds);
+  s_bitmap_layer = bitmap_layer_create(window_bounds);
   bitmap_layer_set_bitmap(s_bitmap_layer, s_bitmap);
 #ifdef PBL_PLATFORM_APLITE
   bitmap_layer_set_compositing_mode(s_bitmap_layer, GCompOpAssign);
@@ -23,11 +34,24 @@ static void main_window_load(Window *window) {
   bitmap_layer_set_compositing_mode(s_bitmap_layer, GCompOpSet);
 #endif
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bitmap_layer));
+    
+  s_time_layer = text_layer_create(GRect(0, 0, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
+    text_layer_set_background_color(s_time_layer, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
+    
+  // Load and set custom font
+  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_STENCIL_34));
+  text_layer_set_font(s_time_layer, s_stencil);
+  text_layer_set_text_color(s_time_layer, GColorRed);
 }
 
 static void main_window_unload(Window *window) {
   bitmap_layer_destroy(s_bitmap_layer);
+  text_layer_destroy(s_time_layer);
   gbitmap_destroy(s_bitmap);
+  // Unload custom font
+  fonts_unload_custom_font(s_stencil);
 }
 
 static void init() {
@@ -41,6 +65,8 @@ static void init() {
     .unload = main_window_unload,
   });
   window_stack_push(s_main_window, true);
+    
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 }
 
 static void deinit() {
