@@ -5,3 +5,6 @@ To add:
 - Month
 - Changing backgrounds(?)
 - More targeting computer-like time display
+
+Font used:
+- Stencil (http://www.dafont.com/ag-stencil.font)
