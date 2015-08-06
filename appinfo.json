@@ -1,0 +1,39 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "miloprice",
+    "longName": "X-wing",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/xwinglog.png",
+                "menuIcon": true,
+                "name": "LOGO",
+                "type": "png"
+            },
+            {
+                "file": "images/209.png",
+                "name": "XWING",
+                "type": "png"
+            },
+            {
+                "file": "images/globe-aplite.png",
+                "name": "GLOBE",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "X-wing",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "c5781420-6943-4c30-8509-daa83c9ef020",
+    "versionLabel": "0.77",
+    "watchapp": {
+        "watchface": true
+    }
+}
