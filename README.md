@@ -7,4 +7,4 @@ To add:
 - More targeting computer-like time display
 
 Font used:
-- Stencil (http://www.dafont.com/ag-stencil.font)
+- Beon (http://www.1001fonts.com/beon-font.html)
