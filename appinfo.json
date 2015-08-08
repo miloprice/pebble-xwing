@@ -9,9 +9,15 @@
     "resources": {
         "media": [
             {
+                "characterRegex": "[0-9]",
+                "file": "fonts/GlaserSteD.ttf",
+                "name": "FONT_GLASERSTED_34",
+                "type": "font"
+            },
+            {
                 "characterRegex": "[0-9:.]",
                 "file": "fonts/beon-webfont.ttf",
-                "name": "FONT_BEON_50",
+                "name": "FONT_BEON_32",
                 "trackingAdjust": 3,
                 "type": "font"
             },

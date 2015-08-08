@@ -9,16 +9,25 @@ static Window *s_main_window;
 static GBitmap *s_bitmap;
 static BitmapLayer *s_bitmap_layer;
 static TextLayer *s_time_layer;
-static TextLayer *s_shadow_layer;
+static TextLayer *s_shadow_layer_l;
+static TextLayer *s_shadow_layer_d;
+static TextLayer *s_shadow_layer_u;
+static TextLayer *s_shadow_layer_r;
 static GFont s_stencil;
 
 // Tick handler, to update every minute
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
     tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
     static char s_time_buffer[16];
-    // This function is extremely handy
-    clock_copy_time_string(s_time_buffer, sizeof(s_time_buffer));
-    text_layer_set_text(s_shadow_layer, s_time_buffer);
+    if (clock_is_24h_style()) {
+      strftime(s_time_buffer, sizeof(s_time_buffer), "00%H%M", tick_time);
+    } else {
+      strftime(s_time_buffer, sizeof(s_time_buffer), "00%I%M", tick_time);
+    }
+    text_layer_set_text(s_shadow_layer_l, s_time_buffer);
+    text_layer_set_text(s_shadow_layer_d, s_time_buffer);
+    text_layer_set_text(s_shadow_layer_u, s_time_buffer);
+    text_layer_set_text(s_shadow_layer_r, s_time_buffer);
     text_layer_set_text(s_time_layer, s_time_buffer);
 }
 
@@ -34,29 +43,53 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bitmap_layer));
     
     
+  // Time shadow layers
+  s_shadow_layer_l = text_layer_create(GRect(0, 55, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_shadow_layer_l, GTextAlignmentCenter);
+  text_layer_set_background_color(s_shadow_layer_l, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_l));
     
-  s_shadow_layer = text_layer_create(GRect(18, 6, 126, window_bounds.size.h));
-  text_layer_set_text_alignment(s_shadow_layer, GTextAlignmentCenter);
-    text_layer_set_background_color(s_shadow_layer, GColorClear);
-  layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer));
+  s_shadow_layer_d = text_layer_create(GRect(1, 56, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_shadow_layer_d, GTextAlignmentCenter);
+  text_layer_set_background_color(s_shadow_layer_d, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_d));
     
+  s_shadow_layer_u = text_layer_create(GRect(1, 54, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_shadow_layer_u, GTextAlignmentCenter);
+  text_layer_set_background_color(s_shadow_layer_u, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_u));
     
-  s_time_layer = text_layer_create(GRect(19, 5, 125, window_bounds.size.h));
+  s_shadow_layer_r = text_layer_create(GRect(2, 55, window_bounds.size.w, window_bounds.size.h));
+  text_layer_set_text_alignment(s_shadow_layer_r, GTextAlignmentCenter);
+    text_layer_set_background_color(s_shadow_layer_r, GColorClear);
+  layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_r));
+
+  // Time layer
+  s_time_layer = text_layer_create(GRect(1, 55, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
     text_layer_set_background_color(s_time_layer, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
     
   // Load and set custom font
-  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_BEON_50));
+  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_BEON_32));
   text_layer_set_font(s_time_layer, s_stencil);
-  text_layer_set_font(s_shadow_layer, s_stencil);
-  text_layer_set_text_color(s_time_layer, GColorRed);
-  text_layer_set_text_color(s_shadow_layer, GColorMelon);
+  text_layer_set_font(s_shadow_layer_l, s_stencil);
+  text_layer_set_font(s_shadow_layer_d, s_stencil);
+  text_layer_set_font(s_shadow_layer_u, s_stencil);
+  text_layer_set_font(s_shadow_layer_r, s_stencil);
+  text_layer_set_text_color(s_time_layer, GColorRajah);
+  text_layer_set_text_color(s_shadow_layer_l, GColorRed);
+  text_layer_set_text_color(s_shadow_layer_d, GColorRed);
+  text_layer_set_text_color(s_shadow_layer_u, GColorRed);
+  text_layer_set_text_color(s_shadow_layer_r, GColorRed);
 }
 
 static void main_window_unload(Window *window) {
   bitmap_layer_destroy(s_bitmap_layer);
-  text_layer_destroy(s_shadow_layer);
+  text_layer_destroy(s_shadow_layer_l);
+  text_layer_destroy(s_shadow_layer_d);
+  text_layer_destroy(s_shadow_layer_u);
+  text_layer_destroy(s_shadow_layer_r);
   text_layer_destroy(s_time_layer);
   gbitmap_destroy(s_bitmap);
   // Unload custom font
