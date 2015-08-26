@@ -9,8 +9,63 @@
     "resources": {
         "media": [
             {
-                "file": "images/xwin.png",
-                "name": "IMAGE_XWING",
+                "file": "images/battery_100.png",
+                "name": "IMAGE_BATT_100",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_090.png",
+                "name": "IMAGE_BATT_090",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_080.png",
+                "name": "IMAGE_BATT_080",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_070.png",
+                "name": "IMAGE_BATT_070",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_060.png",
+                "name": "IMAGE_BATT_060",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_050.png",
+                "name": "IMAGE_BATT_050",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_040.png",
+                "name": "IMAGE_BATT_040",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_030.png",
+                "name": "IMAGE_BATT_030",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_020.png",
+                "name": "IMAGE_BATT_020",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_010.png",
+                "name": "IMAGE_BATT_010",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_000.png",
+                "name": "IMAGE_BATT_000",
+                "type": "png"
+            },
+            {
+                "file": "images/xwing.png",
+                "name": "IMAGE_XWING_BG",
                 "type": "png"
             },
             {
