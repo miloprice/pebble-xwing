@@ -1,5 +1,5 @@
 # pebble-xwing
-Test watchface for Pebble Time (Basalt). Shows time and a screenshot from X-wing (1994, DOS).
+Test watchface for Pebble Time (Basalt). Shows time and a screenshot from X-wing (1993, DOS).
 
 To add:
 - Month (as flight recorder)
