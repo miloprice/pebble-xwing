@@ -83,7 +83,7 @@
             {
                 "characterRegex": "[0-9:.]",
                 "file": "fonts/beon-webfont.ttf",
-                "name": "FONT_BEON_32",
+                "name": "FONT_BEON_22",
                 "trackingAdjust": 3,
                 "type": "font"
             },

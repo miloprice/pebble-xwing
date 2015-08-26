@@ -106,28 +106,28 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, bitmap_layer_get_layer(s_battery_layer));
     
 //   Time shadow layers
-  s_shadow_layer_l = text_layer_create(GRect(0, 55, window_bounds.size.w, window_bounds.size.h));
+  s_shadow_layer_l = text_layer_create(GRect(0, 1, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_shadow_layer_l, GTextAlignmentCenter);
   text_layer_set_background_color(s_shadow_layer_l, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_l));
     
-  s_shadow_layer_d = text_layer_create(GRect(1, 56, window_bounds.size.w, window_bounds.size.h));
+  s_shadow_layer_d = text_layer_create(GRect(1, 2, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_shadow_layer_d, GTextAlignmentCenter);
   text_layer_set_background_color(s_shadow_layer_d, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_d));
     
-  s_shadow_layer_u = text_layer_create(GRect(1, 54, window_bounds.size.w, window_bounds.size.h));
+  s_shadow_layer_u = text_layer_create(GRect(1, 0, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_shadow_layer_u, GTextAlignmentCenter);
   text_layer_set_background_color(s_shadow_layer_u, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_u));
     
-  s_shadow_layer_r = text_layer_create(GRect(2, 55, window_bounds.size.w, window_bounds.size.h));
+  s_shadow_layer_r = text_layer_create(GRect(2, 1, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_shadow_layer_r, GTextAlignmentCenter);
   text_layer_set_background_color(s_shadow_layer_r, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_shadow_layer_r));
 
   // Time layer
-  s_time_layer = text_layer_create(GRect(1, 55, window_bounds.size.w, window_bounds.size.h));
+  s_time_layer = text_layer_create(GRect(1, 1, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_time_layer, GTextAlignmentCenter);
   text_layer_set_background_color(s_time_layer, GColorClear);
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
@@ -139,7 +139,7 @@ static void main_window_load(Window *window) {
   //layer_add_child(window_layer, text_layer_get_layer(s_date_layer));
 
   // Load and set custom fonts
-  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_BEON_32));
+  s_stencil = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_BEON_22));
   s_silkscreen = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_SILKSCREEN_8));
   text_layer_set_font(s_time_layer, s_stencil);
   text_layer_set_font(s_shadow_layer_l, s_stencil);
