@@ -1,9 +1,14 @@
 # pebble-xwing
 Test watchface for Pebble Time (Basalt). Shows time and a screenshot from X-wing (1993, DOS).
 
+![Screenshot of app](/store_screenshot.png?raw=true "Screenshot")
+
+Current features:
+- Time
+- Battery level (as ship throttle)
+
 To add:
 - Month (as flight recorder)
-- Watch battery level (as ship throttle)
 - Changing backgrounds(?)
 
 Fonts used:
