@@ -9,7 +9,7 @@
     "resources": {
         "media": [
             {
-                "file": "images/xwin.png",
+                "file": "images/xwing.png",
                 "name": "IMAGE_XWIN",
                 "type": "png"
             },
