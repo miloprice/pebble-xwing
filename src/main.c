@@ -51,35 +51,35 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 //   text_layer_set_text(s_date_layer, s_date_buffer);
 }
 
-// static void battery_handler(BatteryChargeState new_state) {
-//   // Write to buffer and display
-//   //static char s_battery_buffer[32];
-//   //snprintf(s_battery_buffer, sizeof(s_battery_buffer), "Current battery level: %d/100", new_state.charge_percent);
-//   //text_layer_set_text(s_output_layer, s_battery_buffer);
-//   if (new_state.charge_percent == 100) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_100);
-//   } else if (new_state.charge_percent == 90) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_090);
-//   } else if (new_state.charge_percent == 80) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_080);
-//   } else if (new_state.charge_percent == 70) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_070);
-//   } else if (new_state.charge_percent == 60) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_060);
-//   } else if (new_state.charge_percent == 50) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_050);
-//   } else if (new_state.charge_percent == 40) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_040);
-//   } else if (new_state.charge_percent == 30) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_030);
-//   } else if (new_state.charge_percent == 20) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_020);
-//   } else if (new_state.charge_percent == 10) {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_010);
-//   } else {
-//     bitmap_layer_set_bitmap(s_battery_layer, s_batt_000);
-//   }
-// }
+static void battery_handler(BatteryChargeState new_state) {
+  // Write to buffer and display
+  //static char s_battery_buffer[32];
+  //snprintf(s_battery_buffer, sizeof(s_battery_buffer), "Current battery level: %d/100", new_state.charge_percent);
+  //text_layer_set_text(s_output_layer, s_battery_buffer);
+  if (new_state.charge_percent == 100) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_100);
+  } else if (new_state.charge_percent == 90) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_090);
+  } else if (new_state.charge_percent == 80) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_080);
+  } else if (new_state.charge_percent == 70) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_070);
+  } else if (new_state.charge_percent == 60) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_060);
+  } else if (new_state.charge_percent == 50) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_050);
+  } else if (new_state.charge_percent == 40) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_040);
+  } else if (new_state.charge_percent == 30) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_030);
+  } else if (new_state.charge_percent == 20) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_020);
+  } else if (new_state.charge_percent == 10) {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_010);
+  } else {
+    bitmap_layer_set_bitmap(s_battery_layer, s_batt_000);
+  }
+}
 
 static void main_window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
@@ -93,17 +93,17 @@ static void main_window_load(Window *window) {
   layer_add_child(window_layer, bitmap_layer_get_layer(s_bitmap_layer));
     
 //     Battery layer
-//   s_batt_000 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_000);
-//   s_batt_010 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_010);
-//   s_batt_020 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_020);
-//   s_batt_030 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_030);
-//   s_batt_040 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_040);
-//   s_batt_050 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_050);
-//   s_batt_060 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_060);
-//   s_batt_070 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_070);
-//   s_batt_080 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_080);
-//   s_batt_090 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_090);
-//   s_batt_100 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_100);
+  s_batt_000 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_000);
+  s_batt_010 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_010);
+  s_batt_020 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_020);
+  s_batt_030 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_030);
+  s_batt_040 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_040);
+  s_batt_050 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_050);
+  s_batt_060 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_060);
+  s_batt_070 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_070);
+  s_batt_080 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_080);
+  s_batt_090 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_090);
+  s_batt_100 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BATT_100);
   
   s_battery_layer = bitmap_layer_create(GRect(43, 156, 56, 5));
 //   bitmap_layer_set_bitmap(s_battery_layer, s_batt_100);
@@ -161,11 +161,13 @@ static void main_window_load(Window *window) {
 //   text_layer_set_text_color(s_date_layer, GColorWhite);
   
   // Get the current battery level
-//   battery_handler(battery_state_service_peek());
+  battery_handler(battery_state_service_peek());
 }
 
 static void main_window_unload(Window *window) {
   bitmap_layer_destroy(s_bitmap_layer);
+  bitmap_layer_destroy(s_battery_layer);
+  
   text_layer_destroy(s_shadow_layer_l);
   text_layer_destroy(s_shadow_layer_d);
   text_layer_destroy(s_shadow_layer_u);
@@ -173,6 +175,18 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(s_time_layer);
   //text_layer_destroy(s_date_layer);
   gbitmap_destroy(s_bitmap);
+  gbitmap_destroy(s_batt_000);
+  gbitmap_destroy(s_batt_010);
+  gbitmap_destroy(s_batt_020);
+  gbitmap_destroy(s_batt_030);
+  gbitmap_destroy(s_batt_040);
+  gbitmap_destroy(s_batt_050);
+  gbitmap_destroy(s_batt_060);
+  gbitmap_destroy(s_batt_070);
+  gbitmap_destroy(s_batt_080);
+  gbitmap_destroy(s_batt_090);
+  gbitmap_destroy(s_batt_100);
+  
   // Unload custom fonts
   fonts_unload_custom_font(s_stencil);
   fonts_unload_custom_font(s_silkscreen);
@@ -193,7 +207,7 @@ static void init() {
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 
   // Subscribe to the Battery State Service
-//   battery_state_service_subscribe(battery_handler);
+  battery_state_service_subscribe(battery_handler);
 }
 
 static void deinit() {
