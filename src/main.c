@@ -1,8 +1,3 @@
-/*
- * main.c
- * Sets up a Window and BitmapLayer, then loads and displays a PNG as a GBitmap
- */
-
 #include <pebble.h>
 
 static Window *s_main_window;
