@@ -2,6 +2,7 @@
 
 static Window *s_main_window;
 static GBitmap *s_bitmap;
+static GBitmap *s_targeting;
 static GBitmap *s_batt_000;
 static GBitmap *s_batt_010;
 static GBitmap *s_batt_020;
@@ -15,6 +16,7 @@ static GBitmap *s_batt_090;
 static GBitmap *s_batt_100;
 static BitmapLayer *s_bitmap_layer;
 static BitmapLayer *s_battery_layer;
+static BitmapLayer *s_targeting_layer;
 static TextLayer *s_time_layer;
 static TextLayer *s_shadow_layer_l;
 static TextLayer *s_shadow_layer_d;
@@ -105,6 +107,13 @@ static void main_window_load(Window *window) {
   bitmap_layer_set_compositing_mode(s_battery_layer, GCompOpSet);
   layer_add_child(window_layer, bitmap_layer_get_layer(s_battery_layer));
     
+  // Targeting computer
+  s_targeting = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_TARGETING);
+  s_targeting_layer = bitmap_layer_create(GRect(0, 0, 120, 60));
+  bitmap_layer_set_bitmap(s_targeting_layer, s_targeting);
+  bitmap_layer_set_compositing_mode(s_targeting_layer, GCompOpSet);
+  layer_add_child(window_layer, bitmap_layer_get_layer(s_targeting_layer));  
+  
 //   Time shadow layers
   s_shadow_layer_l = text_layer_create(GRect(0, 1, window_bounds.size.w, window_bounds.size.h));
   text_layer_set_text_alignment(s_shadow_layer_l, GTextAlignmentCenter);
@@ -162,12 +171,14 @@ static void main_window_load(Window *window) {
 static void main_window_unload(Window *window) {
   bitmap_layer_destroy(s_bitmap_layer);
   bitmap_layer_destroy(s_battery_layer);
+  bitmap_layer_destroy(s_targeting_layer);
   
   text_layer_destroy(s_shadow_layer_l);
   text_layer_destroy(s_shadow_layer_d);
   text_layer_destroy(s_shadow_layer_u);
   text_layer_destroy(s_shadow_layer_r);
   text_layer_destroy(s_time_layer);
+  
   //text_layer_destroy(s_date_layer);
   gbitmap_destroy(s_bitmap);
   gbitmap_destroy(s_batt_000);
@@ -181,6 +192,7 @@ static void main_window_unload(Window *window) {
   gbitmap_destroy(s_batt_080);
   gbitmap_destroy(s_batt_090);
   gbitmap_destroy(s_batt_100);
+  gbitmap_destroy(s_targeting);
   
   // Unload custom fonts
   fonts_unload_custom_font(s_stencil);

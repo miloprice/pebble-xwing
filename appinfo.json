@@ -9,6 +9,11 @@
     "resources": {
         "media": [
             {
+                "file": "images/targetinga.png",
+                "name": "IMAGE_TARGETING",
+                "type": "png"
+            },
+            {
                 "file": "images/battery_100.png",
                 "name": "IMAGE_BATT_100",
                 "type": "png"
